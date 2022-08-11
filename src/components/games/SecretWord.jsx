@@ -53,7 +53,7 @@ export default function SecretWord() {
         if (secretWordAnswer === currentWord) {
             console.log("congrats you won!");
             setGameover({gameover: true, guessedWord: true});
-            return;
+            // return;
         } else {
             console.log("try again");
         }
@@ -83,6 +83,7 @@ export default function SecretWord() {
                 <div className="game">
                     <Board />
                     {gameover.gameover ? <Gameover /> : <Keyboard />}
+                    {/* <Keyboard /> */}
                 </div>
             </AppContext.Provider>
         </div>
