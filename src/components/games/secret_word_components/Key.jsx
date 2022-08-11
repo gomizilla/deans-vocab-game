@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import { AppContext } from "../SecretWord";
 
-export default function Key({ keyVal, enterOrDelete }) {
+export default function Key({ keyVal, enterOrDelete, disabled }) {
     const { onEnter, onDelete, onSelectLetter} = useContext(AppContext);
 
     const selectedLetter = () => {
@@ -15,7 +15,7 @@ export default function Key({ keyVal, enterOrDelete }) {
     }
 
     return (
-        <div className="key" id={enterOrDelete && "big"} onClick={selectedLetter}>
+        <div className="key" id={enterOrDelete ? "big" : disabled && "disabled"} onClick={selectedLetter}>
             { keyVal }
         </div>
     )

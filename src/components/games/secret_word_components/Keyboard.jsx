@@ -8,7 +8,7 @@ export default function Keyboard() {
     const keyboardMid = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
     const keyboardBot = ["Z", "X", "C", "V", "B", "N", "M"];
 
-    const { onEnter, onDelete, onSelectLetter } = useContext(AppContext);
+    const { onEnter, onDelete, onSelectLetter, notUsed } = useContext(AppContext);
 
     const handleKeyboard = useCallback((event) => {
         if (event.key === "Enter") {
@@ -46,18 +46,18 @@ export default function Keyboard() {
         <div className="keyboard" onKeyDown={handleKeyboard}>
             <div className="line1">
                 {keyboardTop.map((key) => {
-                    return <Key keyVal={key}/>
+                    return <Key keyVal={key} disabled={notUsed.includes(key)}/>
                 })}
             </div>
             <div className="line2">
                 {keyboardMid.map((key) => {
-                    return <Key keyVal={key}/>
+                    return <Key keyVal={key} disabled={notUsed.includes(key)}/>
                 })}
             </div>
             <div className="line3">
                 <Key keyVal={"ENTER"} enterOrDelete/>
                 {keyboardBot.map((key) => {
-                    return <Key keyVal={key}/>
+                    return <Key keyVal={key} disabled={notUsed.includes(key)}/>
                 })}
                 <Key keyVal={"DELETE"} enterOrDelete/>
             </div>
