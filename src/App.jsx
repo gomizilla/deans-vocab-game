@@ -7,6 +7,7 @@ export default function App() {
     // STATE - State generally refers to data or properties that need to be tracking in an application.
 
     // const [allLocations, setAllLocations] = useState([]); - example
+    const [currentGame, setCurrentGame] = useState();
     
     // EFFECT
     /* The useEffect Hook allows you to perform side effects in your components.
@@ -21,6 +22,8 @@ export default function App() {
             getTotalLocations();
         }, []);
     */
+       // write useEffect to change current game
+
 
     // HANDLER
     /* const getTotalLocations = async () => {
@@ -29,12 +32,15 @@ export default function App() {
     };
     */
 
+    console.log("App.jsx current game check: ", currentGame);
 
     // RENDER
     return (
         <div className="App">
             <Header />
-            <Game />
+            <Game 
+                setCurrentGame={setCurrentGame}
+            />
         </div>
     );
 }

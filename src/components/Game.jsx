@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./Game.css";
+// import "./Game.css";
+import SecretWord from "./games/SecretWord";
 import server from "../util/dataFromServer";
 
-export default function Game() {
+export default function Game(props) {
     // console.log("server check: ", server.server);
+
+    // const {setCurrentGame} = props;
 
     const [wordScramble, setWordScramble] = useState(false);
     const [secretWord, setSecretWord] = useState(false);
     const [multiChoice, setMultiChoice] = useState(false);
+
+    // const secretWordRef = useRef(null);
 
     // const handleGameUpdate = (e) => {
     //     e.preventDefault(); // not sure what this is for
@@ -21,18 +26,21 @@ export default function Game() {
         setWordScramble(true);
         setSecretWord(false);
         setMultiChoice(false);
+        props.setCurrentGame("wordScramble");
     }
     const handleSecretWord = () => {
         console.log("secret word btn clicked");
         setWordScramble(false);
         setSecretWord(true);
         setMultiChoice(false);
+        props.setCurrentGame("secretWord");
     }
     const handleMultiChoice = () => {
         console.log("multi choice btn clicked");
         setWordScramble(false);
         setSecretWord(false);
         setMultiChoice(true);
+        props.setCurrentGame("multiChoice");
     }
 
     console.log("word: ", wordScramble, "secret: ", secretWord, "multi: ", multiChoice);
@@ -46,7 +54,8 @@ export default function Game() {
                 <button id="multi-choice" onClick={handleMultiChoice}>Multiple Choice</button>
             </div>
             <div className="game-wrapper-container">
-                
+                <SecretWord />
+                {console.log("in return section test")}
             </div>
         </div>
     );
