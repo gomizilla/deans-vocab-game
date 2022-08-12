@@ -40,6 +40,7 @@ export default function App() {
             <Header />
             <Game 
                 setCurrentGame={setCurrentGame}
+                currentGame={currentGame}
             />
         </div>
     );

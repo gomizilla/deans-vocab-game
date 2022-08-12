@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import "./Game.css";
+import "./Game.css";
 import SecretWord from "./games/SecretWord";
 import server from "../util/dataFromServer";
 
@@ -26,28 +26,28 @@ export default function Game(props) {
         setWordScramble(true);
         setSecretWord(false);
         setMultiChoice(false);
-        props.setCurrentGame("wordScramble");
+        props.setCurrentGame("Word Scramble");
     }
     const handleSecretWord = () => {
         console.log("secret word btn clicked");
         setWordScramble(false);
         setSecretWord(true);
         setMultiChoice(false);
-        props.setCurrentGame("secretWord");
+        props.setCurrentGame("Secret Word");
     }
     const handleMultiChoice = () => {
         console.log("multi choice btn clicked");
         setWordScramble(false);
         setSecretWord(false);
         setMultiChoice(true);
-        props.setCurrentGame("multiChoice");
+        props.setCurrentGame("Multiple Choice");
     }
 
     console.log("word: ", wordScramble, "secret: ", secretWord, "multi: ", multiChoice);
 
     return (
         <div className="game-container">
-            <h1 className="game-header">GAME AREA</h1>
+            <h1 className="game-header">{props.currentGame ? props.currentGame : "Choose Your Game:"}</h1>
             <div className="games">
                 <button id="word-scramble" onClick={handleWordScramble}>Word Scramble</button>
                 <button id="wordle" onClick={handleSecretWord}>Secret Word</button>

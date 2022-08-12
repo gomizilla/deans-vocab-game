@@ -22,11 +22,12 @@ export default function SecretWord() {
     const [currentAttempt, setCurrentAttempt] = useState({round: 0, letterPos: 0});
     const [notUsed, setNotUsed] = useState([]);
     const [gameover, setGameover] = useState({gameover: false, guessedWord: false});
+    const [totalAttempts, setTotalAttempts] = useState(0);
 
     const secretWordAnswer = "BUTTS";
 
     const onSelectLetter = (keyVal) => {
-        if (currentAttempt.letterPos > 4) return;
+        if (currentAttempt.letterPos > 4) return; // change 5 to secretWordAnswer.length - 1 (?)
         const currentBoard = [...board];
         currentBoard[currentAttempt.round][currentAttempt.letterPos] = keyVal;
         setBoard(currentBoard);
@@ -42,10 +43,13 @@ export default function SecretWord() {
     }
 
     const onEnter = () => {
-        if (currentAttempt.letterPos !== 5) return;
-
+        if (currentAttempt.letterPos === 5) {
+            setTotalAttempts(totalAttempts+1);
+        }
+        if (currentAttempt.letterPos !== 5) return; // change 5 to secretWordAnswer.length 
+        
         let currentWord = "";
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 5; i++) { // change 5 to secretWordAnswer.length 
             currentWord += board[currentAttempt.round][i];
         }
         console.log("current word: ", currentWord);
@@ -54,13 +58,24 @@ export default function SecretWord() {
             console.log("congrats you won!");
             setGameover({gameover: true, guessedWord: true});
             // return;
-        } else {
-            console.log("try again");
+        } 
+        
+        if (secretWordAnswer !== currentWord) {
+            console.log("Try again");
         }
-
+        
         setCurrentAttempt({round: currentAttempt.round + 1, letterPos: 0});
-    }
 
+        if (currentAttempt.round === 5 && gameover.guessedWord === false) {
+            console.log("try again????????")
+            // setTotalAttempts(totalAttempts+6)
+            setBoard(defaultBoard);
+            setCurrentAttempt({round: 0, letterPos: 0});
+            // console.log("total attempts check: ", totalAttempts)
+            // setCurrentAttempt({round: currentAttempt.round + 1, letterPos: 0});
+        }
+    }
+    console.log("total attempts check: ", totalAttempts);
     
     return (
         <div className="secret-word">
@@ -77,7 +92,8 @@ export default function SecretWord() {
                     notUsed,
                     setNotUsed,
                     gameover,
-                    setGameover
+                    setGameover,
+                    totalAttempts
                     }}
             >
                 <div className="game">

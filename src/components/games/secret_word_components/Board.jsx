@@ -1,18 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import Letter from "./Letter";
+// import { AppContext } from "../SecretWord";
+
 
 export default function Board() {
 
-    // const defaultBoard = [
-    //     ["", "", "", "", ""],
-    //     ["", "", "", "", ""],
-    //     ["", "", "", "", ""],
-    //     ["", "", "", "", ""],
-    //     ["", "", "", "", ""],
-    //     ["", "", "", "", ""],
-    // ];
+    // const { gameover, secretWordAnswer, onEnter } = useContext(AppContext);
 
-    // const [board, setBoard] = useState(defaultBoard);
+    // const handleBoard = () => {
+        
+    // }
 
     return (
         <div className="board">
