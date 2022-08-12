@@ -135,7 +135,8 @@ export default function WordScramble(props) {
                         {/* <li className="ws-vocab" name="scrambledWord">{wordSearchListScrambled[0]}</li> */}
                     </ul>
                     <div className="ws-num-correct">
-                        {submittedWords.length} / 10
+                        {submittedWords.length === 10 ? "Winner!" : `${submittedWords.length} / 10`}
+                        {/* {submittedWords.length} / 10 */}
                     </div>
                 </>
             ) : null}
