@@ -104,6 +104,7 @@ export default function WordScramble(props) {
             console.log("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
             console.log("awerawerawerawerawer: ", wordListTest[userInput.value])
             document.getElementById(`${wordListTest[userInput.value]}`).className = "correct";
+            document.getElementById(`${wordListTest[userInput.value]}`).innerHTML = `${userInput.value} ✅`;
             setSubmittedWords([...submittedWords, userInput.value]);
         }
         userInput.value = "";
