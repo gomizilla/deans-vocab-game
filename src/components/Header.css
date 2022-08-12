@@ -1,0 +1,28 @@
+.header-container {
+    /* position: absolute; */
+    /* z-index: 100; */
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* color: black; */
+    /* height: 10vh; */
+    border: 2px solid green;
+    background-color: pink;
+  }
+  
+  .wrapper-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 0 0 2% 0; */
+    /* height: 2rem; */
+  }
+  
+  .Header {
+    font-size: 1.5rem;
+    color: black;
+    align-items: center;
+    justify-content: center;
+  }
+  
