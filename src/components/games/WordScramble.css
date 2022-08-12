@@ -1,0 +1,49 @@
+.ws-game {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: space-evenly;
+    height: 400px;
+    background-color: yellow;
+}
+
+.ws-wordbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    /* flex-direction: row; */
+    border: 2px solid pink;
+    width: 75%;
+    height: 25%;
+}
+
+.ws-vocab {
+    color: black;
+    width: 100px;
+    background-color: orange;
+}
+
+.ws-num-correct {
+    font-size: 32px;
+}
+
+
+#ws-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid purple;
+    width: 60%;
+}
+
+#ws-guess {
+    /* width: 100%; */
+    width: 325px;
+}
+
+.correct {
+    background-color: green;
+    text-decoration: line-through;
+}

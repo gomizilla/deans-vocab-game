@@ -32,7 +32,7 @@ export default function App() {
     };
     */
 
-    console.log("App.jsx current game check: ", currentGame);
+    // console.log("App.jsx current game check: ", currentGame);
 
     // RENDER
     return (
