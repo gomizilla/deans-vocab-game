@@ -13,7 +13,20 @@ export default function Game(props) {
     const [secretWord, setSecretWord] = useState(false);
     const [multiChoice, setMultiChoice] = useState(false);
     const [vocabList, setVocabList] = useState(server.server);
-    // const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        if(props.currentGame === "Word Scramble") setWordScramble(true)
+    }, [props.currentGame]);
+
+    useEffect(() => {
+        if(props.currentGame === "Secret Word") setSecretWord(true)
+    }, [props.currentGame]);
+
+    useEffect(() => {
+        if(props.currentGame === "Multiple Choice") setMultiChoice(true)
+    }, [props.currentGame]);
+
+    const [isLoaded, setIsLoaded] = useState(false);
 
     // console.log("vocab list check: ", vocabList);
 
@@ -48,7 +61,7 @@ export default function Game(props) {
         props.setCurrentGame("Multiple Choice");
     }
 
-    // console.log("word: ", wordScramble, "secret: ", secretWord, "multi: ", multiChoice);
+    console.log("word: ", wordScramble, "secret: ", secretWord, "multi: ", multiChoice);
 
     return (
         <div className="game-container">
@@ -61,7 +74,15 @@ export default function Game(props) {
             <div className="game-wrapper-container">
                 {/* <h1 className="game-wrapper-header"> Welcome </h1> */}
                 {/* {props.currentGame === "Secret Word" ? <SecretWord /> : null } */}
-                <WordScramble vocabList={vocabList} wordScramble={wordScramble}/>
+                {/* <WordScramble vocabList={vocabList} wordScramble={wordScramble}/> */}
+                {/* {wordScramble ? <WordScramble vocabList={vocabList} wordScramble={wordScramble}/> : null} */}
+                {/* {secretWord ? <SecretWord /> : null} */}
+                {/* {secretWord ? <SecretWord /> : <WordScramble vocabList={vocabList} wordScramble={wordScramble}/> } */}
+                {/* {props.currentGame === "Word Scramble" && <WordScramble vocabList={vocabList} wordScramble={wordScramble}/>}
+                {props.currentGame === "Secret Word" && <SecretWord />} */}
+                {secretWord && <SecretWord />}
+                {wordScramble && <WordScramble vocabList={vocabList} wordScramble={wordScramble} currentGame={props.currentGame}/>}
+                
             </div>
         </div>
     );

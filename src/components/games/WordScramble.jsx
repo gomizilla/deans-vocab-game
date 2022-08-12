@@ -9,20 +9,31 @@ export default function WordScramble(props) {
     const [wordSearchList, setWordSearchList] = useState([]);
     const [wordSearchListScrambled, setWordSearchListScrambled] = useState([]);
     const [submittedWords, setSubmittedWords] = useState([]);
-    const [wordListTest, setWordListTest] = useState([])
+    const [wordListTest, setWordListTest] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
+    console.log("props.wordScramble: ", props.wordScramble);
+    
+    useEffect(() => {
+        if (props.currentGame === "Word Scramble") {
+            setIsLoaded(true);
+        }
+    })
     useEffect(() => {
         getAllEnglishVocab();
         handleVocabList();
-    }, []);
+        scrambleWord(wordSearchList);
+        handleScrambleWordList();
+        testWordObj();
+    }, [isLoaded]); 
 
-    useEffect(() => {
-        if (props.wordScramble === true) handleScrambleWordList();
-        // handleWordCheck();
-    },[props.wordScramble]);
+    // useEffect(() => {
+    //     if (props.wordScramble === true) handleScrambleWordList();
+    //     // handleWordCheck();
+    // },[props.wordScramble]);
 
-    useEffect(() => {
-        if(wordSearchListScrambled.length > 0) handleWordCheck();
+    useEffect(() => { 
+        if(wordSearchListScrambled.length > 0) //handleWordCheck();
         testWordObj();
         // handleUserInput();
     }, [wordSearchListScrambled]);
@@ -98,15 +109,13 @@ export default function WordScramble(props) {
         userInput.value = "";
     }
 
-    const handleWordCheck = () => {
-        const listOfScrambledWords = document.getElementsByClassName("ws-vocab")
+    // const handleWordCheck = () => {
+    //     const listOfScrambledWords = document.getElementsByClassName("ws-vocab")
 
-        for (const word of listOfScrambledWords) {
-            console.log("🍕🍕🍕", word.id);
-        }
-    }
-
-    // handleWordCheck();
+    //     for (const word of listOfScrambledWords) {
+    //         console.log("🍕🍕🍕", word.id);
+    //     }
+    // }
 
     // const wordState = correct ? "correct" : null;
  
