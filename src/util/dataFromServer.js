@@ -37,4 +37,12 @@ const server = [
     }
 ];
 
+const getAllEnglishVocab = () => {
+    // return axios.get(server.english_vocab);
+    return server.map((word) => {
+        return word.english_vocab;
+    })
+}
+
+export { getAllEnglishVocab };
 export default { server };
