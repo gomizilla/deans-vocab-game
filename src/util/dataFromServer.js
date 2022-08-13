@@ -1,4 +1,10 @@
+import axios from "axios";
 
+const data = "https://solomvp-test.herokuapp.com/api/";
+
+const getAllVocab = () => {
+    return axios.get(`${data}vocab`);
+};
 // fake data for now
 
 const server = [
@@ -34,8 +40,64 @@ const server = [
     },
     {
         english_vocab: "cannot",
-    }
+    },
+    {
+        english_vocab: "market",
+    },
+    {
+        english_vocab: "wow",
+    },
+    {
+        english_vocab: "popular",
+    },
+    {
+        english_vocab: "crowded",
+    },
+    {
+        english_vocab: "symbol",
+    },
+    {
+        english_vocab: "picnic",
+    },
+    {
+        english_vocab: "area",
+    },
+    {
+        english_vocab: "hey",
+    },
+    {
+        english_vocab: "around",
+    },
+    {
+        english_vocab: "come",
+    },
+    {
+        english_vocab: "toast",
+    },
+    {
+        english_vocab: "yogurt",
+    },
+    {
+        english_vocab: "also",
+    },
+    {
+        english_vocab: "sounds",
+    },
+    {
+        english_vocab: "sausage",
+    },
 ];
+
+const teachersSecretWords = [
+    {
+        name: "Bob Barker",
+        secret_word: "fruit"
+    },
+    {
+        name: "Arnold Schwarzenegger",
+        secret_word: "terminated"
+    }
+]
 
 const getAllEnglishVocab = () => {
     // return axios.get(server.english_vocab);
@@ -44,5 +106,13 @@ const getAllEnglishVocab = () => {
     })
 }
 
-export { getAllEnglishVocab };
+const getSecretWord = (teacherName) => {
+    return teachersSecretWords.map((teacher) => {
+        if (teacher.name === teacherName) {
+            return teacher.secret_word;
+        }
+    });
+}
+
+export { getAllEnglishVocab, getAllVocab, getSecretWord };
 export default { server };
