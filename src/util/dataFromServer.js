@@ -95,7 +95,7 @@ const teachersSecretWords = [
     },
     {
         name: "Arnold Schwarzenegger",
-        secret_word: "terminated"
+        secret_word: "juice"
     }
 ]
 
@@ -107,11 +107,18 @@ const getAllEnglishVocab = () => {
 }
 
 const getSecretWord = (teacherName) => {
-    return teachersSecretWords.map((teacher) => {
-        if (teacher.name === teacherName) {
-            return teacher.secret_word;
+    // return teachersSecretWords.map((teacher) => {
+    //     if (teacher.name === teacherName) {
+    //         return teacher.secret_word;
+    //     }
+    // });
+    let secretWord = "";
+    for (let i = 0; i < teachersSecretWords.length; i++) {
+        if (teachersSecretWords[i].name === teacherName) {
+            secretWord = teachersSecretWords[i].secret_word;
         }
-    });
+    }
+    return secretWord;
 }
 
 export { getAllEnglishVocab, getAllVocab, getSecretWord };

@@ -3,12 +3,15 @@ import Board from "./secret_word_components/Board";
 import Keyboard from "./secret_word_components/Keyboard";
 import Gameover from "./secret_word_components/Gameover";
 import Letter from "./secret_word_components/Letter";
+import { getSecretWord } from "../../util/dataFromServer";
 import "./SecretWord.css";
 
 export const AppContext = createContext();
 
 export default function SecretWord() {
     
+    const [testDefaultBoard, setTestDefaultBoard] = useState([]);
+
     const defaultBoard = [
         ["", "", "", "", ""],
         ["", "", "", "", ""],
@@ -17,14 +20,28 @@ export default function SecretWord() {
         ["", "", "", "", ""],
         ["", "", "", "", ""],
     ];
-
+    
+    // const defaultBoard = testDefaultBoard;
     const [board, setBoard] = useState(defaultBoard);
     const [currentAttempt, setCurrentAttempt] = useState({round: 0, letterPos: 0});
     const [notUsed, setNotUsed] = useState([]);
     const [gameover, setGameover] = useState({gameover: false, guessedWord: false});
     const [totalAttempts, setTotalAttempts] = useState(0);
+    const [secretWord, setSecretWord] = useState("");
+    
+    // const defaultBoard = testDefaultBoard;
 
-    const secretWordAnswer = "BUTTS";
+    const secretWordAnswer = secretWord.toUpperCase();
+
+    useEffect(() => {
+        getSecretWord();
+        handleSecretWord();
+        // handleDefaultBoard();
+    }, []);
+
+    // console.log("secret word test ✅✅✅✅✅✅: ", getSecretWord("Bob Barker"));
+    // console.log("secret word test ✅✅✅✅✅✅: ", secretWord);
+
 
     const onSelectLetter = (keyVal) => {
         if (currentAttempt.letterPos > 4) return; // change 5 to secretWordAnswer.length - 1 (?)
@@ -75,7 +92,27 @@ export default function SecretWord() {
             // setCurrentAttempt({round: currentAttempt.round + 1, letterPos: 0});
         }
     }
-    console.log("total attempts check: ", totalAttempts);
+
+    // console.log("total attempts check: ", totalAttempts);
+
+    const handleSecretWord = () => {
+        setSecretWord(getSecretWord("Bob Barker"));
+    }
+
+    const handleDefaultBoard = () => {
+        let boardSize = secretWord.length;
+        let board = [];
+        for (let i = 0; i < 6; i++) {
+            let tempArr = [];
+            for (let j = 0; j < boardSize; j++) {
+                tempArr.push("");
+            }
+            board.push(tempArr);
+        }
+        // console.log("board test 🙏🙏🙏🙏🙏🙏: ", board);
+        setTestDefaultBoard(board);
+    }
+    // handleDefaultBoard();
     
     return (
         <div className="secret-word">
