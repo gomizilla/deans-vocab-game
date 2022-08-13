@@ -3,6 +3,7 @@ import "./Game.css";
 import SecretWord from "./games/SecretWord";
 import WordScramble from "./games/WordScramble";
 import server from "../util/dataFromServer";
+import { getAllVocab } from "../util/dataFromServer";
 
 export default function Game(props) {
     // console.log("server check: ", server.server);
@@ -13,6 +14,10 @@ export default function Game(props) {
     const [secretWord, setSecretWord] = useState(false);
     const [multiChoice, setMultiChoice] = useState(false);
     const [vocabList, setVocabList] = useState(server.server);
+
+    useEffect(() => {
+        getAllVocab();
+    }, []);
 
     useEffect(() => {
         if(props.currentGame === "Word Scramble") setWordScramble(true)
@@ -38,6 +43,11 @@ export default function Game(props) {
     //     const wordleBtn = document.getElementById("wordle");
     //     const multiChoiceBtn = document.getElementById("multi-choice");
     // }
+
+    const getVocabList = async () => {
+        const list = await getAllVocab();
+        console.log("heroku list test: ", list);
+    }
 
     const handleWordScramble = () => {
         console.log("word scramble btn clicked");
