@@ -46,7 +46,13 @@ export default function WordScramble(props) {
         const list = getAllEnglishVocab();
         const newList = [];
         for (let i = 0; i < 10; i++) { // choose first 10 in the list, should be random from entire list & what teacher decides
-            newList.push(list[i]);
+            let random = Math.floor(Math.random() * list.length);
+            console.log("random after calling: ", random);
+            console.log("list before splice: ", list);
+            newList.push(list[random]);
+            list.splice(random, 1);
+            console.log("random after splicing: ", random);
+            console.log("list after splice: ", list);
         }
         setWordSearchList(newList);
     }
