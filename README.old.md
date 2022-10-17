@@ -1,1 +1,0 @@
-# solomvp-frontend
