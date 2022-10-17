@@ -12,7 +12,8 @@ export default function WordScramble(props) {
     const [wordListTest, setWordListTest] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    console.log("props.wordScramble: ", props.wordScramble);
+    // console.log("props.wordScramble: ", props.wordScramble);
+    // console.log("wordsearchlist: ", wordSearchList);
     
     useEffect(() => {
         if (props.currentGame === "Word Scramble") {
@@ -20,7 +21,7 @@ export default function WordScramble(props) {
         }
     })
     useEffect(() => {
-        getAllEnglishVocab();
+        // getAllEnglishVocab();
         handleVocabList();
         scrambleWord(wordSearchList);
         handleScrambleWordList();
@@ -42,12 +43,46 @@ export default function WordScramble(props) {
     //     handleUserInput();
     // }, [submittedWords])
 
+    // ✅✅
+    // const handleVocabList = () => { // need async/await later?
+    //     const list = getAllEnglishVocab();
+    //     const newList = [];
+    //     // for (let i = 0; i < 10; i++) { // choose first 10 in the list, should be random from entire list & what teacher decides
+    //     //     let random = Math.floor(Math.random() * list.length);
+    //     //     console.log("random after calling: ", random);
+    //     //     console.log("list before splice: ", list);
+    //     //     newList.push(list[random]);
+    //     //     list.splice(random, 1);
+    //     //     console.log("random after splicing: ", random);
+    //     //     console.log("list after splice: ", list);
+    //     // }
+    //     for (let i = 0; i < 10; i++) { // choose first 10 in the list, should be random from entire list & what teacher decides
+    //         newList.push(list[i]);
+    //     }
+    //     setWordSearchList(newList);
+    // }
+    // console.log("props.vocablist check: ", props.vocabList)
+
     const handleVocabList = () => { // need async/await later?
-        const list = getAllEnglishVocab();
+        
+        // const list = getAllEnglishVocab();
         const newList = [];
-        for (let i = 0; i < 10; i++) { // choose first 10 in the list, should be random from entire list & what teacher decides
-            newList.push(list[i]);
+
+        for (let i = 0; i < 10; i++) {
+            newList.push(props.vocabList[i].english_vocab);
         }
+        // for (let i = 0; i < 10; i++) { // choose first 10 in the list, should be random from entire list & what teacher decides
+        //     let random = Math.floor(Math.random() * list.length);
+        //     console.log("random after calling: ", random);
+        //     console.log("list before splice: ", list);
+        //     newList.push(list[random]);
+        //     list.splice(random, 1);
+        //     console.log("random after splicing: ", random);
+        //     console.log("list after splice: ", list);
+        // }
+        // for (let i = 0; i < 10; i++) { // choose first 10 in the list, should be random from entire list & what teacher decides
+        //     newList.push(list[i]);
+        // }
         setWordSearchList(newList);
     }
 
@@ -93,16 +128,16 @@ export default function WordScramble(props) {
         setWordListTest(testSWO);
     }
 
-    console.log("word list test: ", wordListTest);
+    // console.log("word list test: ", wordListTest);
 
     const handleUserInput = (e) => {
         e.preventDefault();
         const userInput = document.getElementById("ws-guess");
-        console.log("userInput: ", userInput.value);
+        // console.log("userInput: ", userInput.value);
 
         if (wordListTest[userInput.value]) {
-            console.log("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
-            console.log("awerawerawerawerawer: ", wordListTest[userInput.value])
+            // console.log("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+            // console.log("awerawerawerawerawer: ", wordListTest[userInput.value])
             document.getElementById(`${wordListTest[userInput.value]}`).className = "correct";
             document.getElementById(`${wordListTest[userInput.value]}`).innerHTML = `${userInput.value} ✅`;
             setSubmittedWords([...submittedWords, userInput.value]);
@@ -120,8 +155,8 @@ export default function WordScramble(props) {
 
     // const wordState = correct ? "correct" : null;
  
-    console.log("ws asdfaslist: ", wordSearchList);
-    console.log("ws scrambled list: ", wordSearchListScrambled);
+    // console.log("ws asdfaslist: ", wordSearchList);
+    // console.log("ws scrambled list: ", wordSearchListScrambled);
     
     return (
         <div className="ws-game">

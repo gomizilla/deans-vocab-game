@@ -3,6 +3,7 @@ import "./Game.css";
 import SecretWord from "./games/SecretWord";
 import WordScramble from "./games/WordScramble";
 import server from "../util/dataFromServer";
+import { getAllVocab } from "../util/dataFromServer";
 
 export default function Game(props) {
     // console.log("server check: ", server.server);
@@ -12,7 +13,13 @@ export default function Game(props) {
     const [wordScramble, setWordScramble] = useState(false);
     const [secretWord, setSecretWord] = useState(false);
     const [multiChoice, setMultiChoice] = useState(false);
-    const [vocabList, setVocabList] = useState(server.server);
+    // const [vocabList, setVocabList] = useState(server.server);
+    const [vocabList, setVocabList] = useState();
+
+    useEffect(() => {
+        getAllVocab();
+        getVocabList();
+    }, []);
 
     useEffect(() => {
         if(props.currentGame === "Word Scramble") setWordScramble(true)
@@ -39,29 +46,35 @@ export default function Game(props) {
     //     const multiChoiceBtn = document.getElementById("multi-choice");
     // }
 
+    const getVocabList = async () => {
+        const list = await getAllVocab();
+        // console.log("heroku list test: ", list.data);
+        setVocabList(list.data);
+    }
+
     const handleWordScramble = () => {
-        console.log("word scramble btn clicked");
+        // console.log("word scramble btn clicked");
         setWordScramble(true);
         setSecretWord(false);
         setMultiChoice(false);
         props.setCurrentGame("Word Scramble");
     }
     const handleSecretWord = () => {
-        console.log("secret word btn clicked");
+        // console.log("secret word btn clicked");
         setWordScramble(false);
         setSecretWord(true);
         setMultiChoice(false);
         props.setCurrentGame("Secret Word");
     }
     const handleMultiChoice = () => {
-        console.log("multi choice btn clicked");
+        // console.log("multi choice btn clicked");
         setWordScramble(false);
         setSecretWord(false);
         setMultiChoice(true);
         props.setCurrentGame("Multiple Choice");
     }
 
-    console.log("word: ", wordScramble, "secret: ", secretWord, "multi: ", multiChoice);
+    // console.log("word: ", wordScramble, "secret: ", secretWord, "multi: ", multiChoice);
 
     return (
         <div className="game-container">
