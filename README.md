@@ -7,7 +7,7 @@ The MVP of this webapp (frontend/backend) was developed within a week. *It is st
 
 # Features
 
-## Easier Wordle
+## Secret Word
 
 Wordle game feature adapted for Japanese JHS students. Modified so that user's have unlimited tries to guess the correct word. For use in the classroom *the student with the least amount of guesses* would be the winner.
 

@@ -82,7 +82,7 @@ export default function Game(props) {
             <div className="games">
                 <button id="word-scramble" onClick={handleWordScramble}>Word Scramble</button>
                 <button id="wordle" onClick={handleSecretWord}>Secret Word</button>
-                <button id="multi-choice" onClick={handleMultiChoice}>Multiple Choice</button>
+                {/* <button id="multi-choice" onClick={handleMultiChoice}>Multiple Choice</button> */}
             </div>
             <div className="game-wrapper-container">
                 {/* <h1 className="game-wrapper-header"> Welcome </h1> */}
