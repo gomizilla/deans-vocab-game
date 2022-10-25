@@ -5,7 +5,9 @@
     align-items: center;
     justify-content: space-evenly;
     height: 400px;
-    background-color: yellow;
+    /* background-color: #121212; */
+    color: whitesmoke;
+    /* border: 2px solid darkgray; */
 }
 
 .ws-wordbox {
@@ -14,13 +16,14 @@
     align-items: center;
     justify-items: center;
     /* flex-direction: row; */
-    border: 2px solid pink;
+    border: 2px solid lightgray;
+    background-color: gray;
     width: 75%;
     height: auto;
 }
 
 .ws-vocab {
-    color: black;
+    color: white;
     display: flex;
     justify-content: center;
     /* justify-content: space-evenly; */
@@ -39,8 +42,8 @@
 #ws-form {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    border: 2px solid purple;
+    justify-content: space-evenly;
+    /* border: 2px solid purple; */
     width: 60%;
 }
 
@@ -53,10 +56,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin: 10px;
     padding: 5px;
-    background-color: green;
+    /* background-color: green; */
     font-size: 24px;
     width: auto;
     /* text-decoration: line-through; */

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-const APP_NAME = "Temp Title";
+const APP_NAME = "Dean's Vocabulary Game";
 
 export default function Header() {
     return (

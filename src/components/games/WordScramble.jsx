@@ -165,7 +165,7 @@ export default function WordScramble(props) {
                     <div id="ws-form">
                         <form onSubmit={handleUserInput}>
                             <label htmlFor="ws-guess"></label>
-                            <input type="text" id="ws-guess"/>
+                            <input type="text" id="ws-guess" placeholder="Write guess here..."/>
                         </form>
                             <button onClick={handleUserInput}>Submit</button>
                     </div>
