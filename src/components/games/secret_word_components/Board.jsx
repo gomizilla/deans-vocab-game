@@ -1,15 +1,8 @@
 import React, {useState, useContext} from "react";
 import Letter from "./Letter";
-// import { AppContext } from "../SecretWord";
 
 
 export default function Board() {
-
-    // const { gameover, secretWordAnswer, onEnter } = useContext(AppContext);
-
-    // const handleBoard = () => {
-        
-    // }
 
     return (
         <div className="board">

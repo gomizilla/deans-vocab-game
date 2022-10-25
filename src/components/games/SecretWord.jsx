@@ -21,7 +21,6 @@ export default function SecretWord() {
         ["", "", "", "", ""],
     ];
     
-    // const defaultBoard = testDefaultBoard;
     const [board, setBoard] = useState(defaultBoard);
     const [currentAttempt, setCurrentAttempt] = useState({round: 0, letterPos: 0});
     const [notUsed, setNotUsed] = useState([]);
@@ -29,22 +28,16 @@ export default function SecretWord() {
     const [totalAttempts, setTotalAttempts] = useState(0);
     const [secretWord, setSecretWord] = useState("");
     
-    // const defaultBoard = testDefaultBoard;
 
     const secretWordAnswer = secretWord.toUpperCase();
 
     useEffect(() => {
         getSecretWord();
         handleSecretWord();
-        // handleDefaultBoard();
     }, []);
 
-    // console.log("secret word test ✅✅✅✅✅✅: ", getSecretWord("Bob Barker"));
-    // console.log("secret word test ✅✅✅✅✅✅: ", secretWord);
-
-
     const onSelectLetter = (keyVal) => {
-        if (currentAttempt.letterPos > 4) return; // change 5 to secretWordAnswer.length - 1 (?)
+        if (currentAttempt.letterPos > 4) return;
         const currentBoard = [...board];
         currentBoard[currentAttempt.round][currentAttempt.letterPos] = keyVal;
         setBoard(currentBoard);
@@ -63,37 +56,24 @@ export default function SecretWord() {
         if (currentAttempt.letterPos === 5) {
             setTotalAttempts(totalAttempts+1);
         }
-        if (currentAttempt.letterPos !== 5) return; // change 5 to secretWordAnswer.length 
+        if (currentAttempt.letterPos !== 5) return; 
         
         let currentWord = "";
-        for (let i = 0; i < 5; i++) { // change 5 to secretWordAnswer.length 
+        for (let i = 0; i < 5; i++) { 
             currentWord += board[currentAttempt.round][i];
         }
-        console.log("current word: ", currentWord);
         
         if (secretWordAnswer === currentWord) {
-            console.log("congrats you won!");
             setGameover({gameover: true, guessedWord: true});
-            // return;
         } 
-        
-        if (secretWordAnswer !== currentWord) {
-            console.log("Try again");
-        }
         
         setCurrentAttempt({round: currentAttempt.round + 1, letterPos: 0});
 
         if (currentAttempt.round === 5 && gameover.guessedWord === false) {
-            console.log("try again????????")
-            // setTotalAttempts(totalAttempts+6)
             setBoard(defaultBoard);
             setCurrentAttempt({round: 0, letterPos: 0});
-            // console.log("total attempts check: ", totalAttempts)
-            // setCurrentAttempt({round: currentAttempt.round + 1, letterPos: 0});
         }
     }
-
-    // console.log("total attempts check: ", totalAttempts);
 
     const handleSecretWord = () => {
         setSecretWord(getSecretWord("Bob Barker"));
@@ -109,10 +89,8 @@ export default function SecretWord() {
             }
             board.push(tempArr);
         }
-        // console.log("board test 🙏🙏🙏🙏🙏🙏: ", board);
         setTestDefaultBoard(board);
     }
-    // handleDefaultBoard();
     
     return (
         <div className="secret-word">
@@ -136,7 +114,6 @@ export default function SecretWord() {
                 <div className="game">
                     <Board />
                     {gameover.gameover ? <Gameover /> : <Keyboard />}
-                    {/* <Keyboard /> */}
                 </div>
             </AppContext.Provider>
         </div>

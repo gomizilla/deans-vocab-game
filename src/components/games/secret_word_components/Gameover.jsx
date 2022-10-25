@@ -4,7 +4,6 @@ import { AppContext } from "../SecretWord";
 
 export default function Gameover() {
     const {gameover, setGameover, secretWordAnswer, currentAttempt, totalAttempts} = useContext(AppContext);
-    // console.log("currentattempt.rounds", currentAttempt.round);
     return (
         <div className="gameover">
             <h3> {gameover.guessedWord ? "Correct!" : "Try again"}</h3>

@@ -5,7 +5,6 @@ const data = "https://solomvp-test.herokuapp.com/api/";
 const getAllVocab = () => {
     return axios.get(`${data}vocab`);
 };
-// fake data for now
 
 const server = [
     {
@@ -100,18 +99,12 @@ const teachersSecretWords = [
 ]
 
 const getAllEnglishVocab = () => {
-    // return axios.get(server.english_vocab);
     return server.map((word) => {
         return word.english_vocab;
     })
 }
 
 const getSecretWord = (teacherName) => {
-    // return teachersSecretWords.map((teacher) => {
-    //     if (teacher.name === teacherName) {
-    //         return teacher.secret_word;
-    //     }
-    // });
     let secretWord = "";
     for (let i = 0; i < teachersSecretWords.length; i++) {
         if (teachersSecretWords[i].name === teacherName) {
