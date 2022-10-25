@@ -46,18 +46,18 @@ export default function Keyboard() {
         <div className="keyboard" onKeyDown={handleKeyboard}>
             <div className="line1">
                 {keyboardTop.map((key) => {
-                    return <Key keyVal={key} disabled={notUsed.includes(key)}/>
+                    return <Key keyVal={key} key={key} disabled={notUsed.includes(key)}/>
                 })}
             </div>
             <div className="line2">
                 {keyboardMid.map((key) => {
-                    return <Key keyVal={key} disabled={notUsed.includes(key)}/>
+                    return <Key keyVal={key} key={key} disabled={notUsed.includes(key)}/>
                 })}
             </div>
             <div className="line3">
                 <Key keyVal={"ENTER"} enterOrDelete/>
                 {keyboardBot.map((key) => {
-                    return <Key keyVal={key} disabled={notUsed.includes(key)}/>
+                    return <Key keyVal={key} key={key} disabled={notUsed.includes(key)}/>
                 })}
                 <Key keyVal={"DELETE"} enterOrDelete/>
             </div>

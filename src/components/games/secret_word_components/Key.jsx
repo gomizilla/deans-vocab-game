@@ -15,7 +15,7 @@ export default function Key({ keyVal, enterOrDelete, disabled }) {
     }
 
     return (
-        <div className="key" id={enterOrDelete ? "big" : disabled && "disabled"} onClick={selectedLetter}>
+        <div className="key" id={enterOrDelete ? "big" : disabled ? "disabled" : undefined} onClick={selectedLetter}>
             { keyVal }
         </div>
     )

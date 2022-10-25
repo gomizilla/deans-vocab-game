@@ -20,6 +20,6 @@ export default function Letter({letterPos, round}) {
     }, [currentAttempt.round])
 
     return (
-        <div className="letter" id={letterState}>{letter}</div>
+        <div className="letter" id={letterState ? letterState : undefined}>{letter}</div>
     )
 }
